@@ -1,0 +1,20 @@
+{
+  "name": "testnodejs",
+  "version": "1.0.0",
+  "description": "A test website?",
+  "main": "hi2.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@serialport/parser-inter-byte-timeout": "^8.0.6",
+    "@serialport/parser-readline": "^8.0.6",
+    "bootstrap": "^4.4.1",
+    "express": "^4.17.1",
+    "jquery": "^3.4.1",
+    "popper": "^1.0.1",
+    "serialport": "^8.0.6"
+  }
+}
