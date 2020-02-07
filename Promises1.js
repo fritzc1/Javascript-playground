@@ -26,9 +26,9 @@ function myConflictChg(successMessage) {
 
 promise 
   .then(function(successMessage) { 
-		console.log("then:" + successMessage); 
-		return "pass to next then";
-	})
+    console.log("then:" + successMessage); 
+    return "pass to next then";
+  })
   .then(myPromiseFunc)
   .then(myPCChange)
   .then(myConflictChg)
