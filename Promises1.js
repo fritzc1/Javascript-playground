@@ -13,7 +13,12 @@ var promise = new Promise(function(resolve, reject) {
 
 function myPromiseFunc(successMessage) {
 	console.log("then2" + successMessage);
+	return (successMessage)
 }
+function myConflictChg(successMessage) {
+	console.log("thenC" + successMessage);
+}
+
 
 promise 
 	.then(function(successMessage) { 
@@ -21,6 +26,7 @@ promise
 		return "pass to next then";
 	})
 	.then(myPromiseFunc)
+	.then(myConflictChg)
 	.catch(function(errorMessage) { 
 	//error handler function is invoked 
 		console.log("catch:" + errorMessage); 
