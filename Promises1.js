@@ -17,7 +17,12 @@ function myPromiseFunc(successMessage) {
 }
 function myPCChange(successMessage) {
 	console.log("then3" + successMessage);
+	return (successMessage)
 }
+function myConflictChg(successMessage) {
+	console.log("thenC" + successMessage);
+}
+
 
 promise 
 	.then(function(successMessage) { 
@@ -26,6 +31,7 @@ promise
 	})
   .then(myPromiseFunc)
   .then(myPCChange)
+	.then(myConflictChg)
 	.catch(function(errorMessage) { 
 	//error handler function is invoked 
 		console.log("catch:" + errorMessage); 
