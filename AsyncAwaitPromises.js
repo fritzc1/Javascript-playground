@@ -29,9 +29,13 @@ async function testfunc() {
    * When "aval" is evaluated in the try block, it's just a PENDING promise object!!
    * Only later is it rejected, and probably you will get an "UnhandledPromiseRejectionWarning: test a reject"
    */
-  return new Promise((res, rej) => rej('test a reject') );
+  //return new Promise((res, rej) => rej('test a reject') );
 
   /* Throwing an error will always cause the .catch() block to gain control, and "err" will be the value thrown.
    */
   //throw "hey I'm an error!"
+
+  /* If you return a regular value what happens?
+   */
+  return 5;
 }
