@@ -1,13 +1,13 @@
 (async () => { // wrap in func to use await!
 
-let aval
+var aval
 try {
-  aval = testfunc();
+  aval = await testfunc();
 } catch (err) {
   console.log('caught ' + err );
 }
 // log a value immed after func call.
-console.log(aval);
+console.log(typeof aval);
 // show value every 1ms
 let int1 = setInterval(() => {console.log(aval)},1);
 // after "n" ms, stop showing the value (and clear this interval too)
@@ -21,7 +21,7 @@ async function testfunc() {
    * Without "await", the promise is not unwrapped, and you'll get a Pending promise on the first log.
    * eventually a Resolved promise with contents "test resolve"
    */
-  //return new Promise((res, rej) => res('test resolve') );
+  return new Promise((res, rej) => res('test resolve') );
 
   /* rejecting the promise will return the string "test resolve" in aval, with await. The .catch() block gets control. 
    * Without "await", the promise is not unwrapped, and you'll get a Pending promise on the first log.
@@ -29,13 +29,19 @@ async function testfunc() {
    * When "aval" is evaluated in the try block, it's just a PENDING promise object!!
    * Only later is it rejected, and probably you will get an "UnhandledPromiseRejectionWarning: test a reject"
    */
-  //return new Promise((res, rej) => rej('test a reject') );
+  return new Promise((res, rej) => rej('test a reject') );
 
-  /* Throwing an error will always cause the .catch() block to gain control, and "err" will be the value thrown.
+  /* Throwing an error will always cause the .catch() block to gain control, and the first parameter "err" will be the value thrown.
+   * Note that "aval" will be "undefined", whether or not you await.
    */
-  //throw "hey I'm an error!"
+  throw new Error("hey I'm an error!")
 
-  /* If you return a regular value what happens?
+  /* when called with async: aval = 5
+   * when called without async: aval = Promise { 5 }
    */
   return 5;
+
+  /* returning no value results in "undefined"
+   */
+  return;
 }
