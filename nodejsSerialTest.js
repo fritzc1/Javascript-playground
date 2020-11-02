@@ -49,12 +49,16 @@ var deviceAddr = 0x05
 var packet = ''
 packet = '!' + String.fromCharCode(deviceAddr) + 'b' + process.argv[3] + '$'
 
-port.write(packet, function(err) {
+var writePromise = new Promise((resolve, reject) => {
+  port.write(packet, function(err) {
     if(err) {
-        return console.log('error on write: ', err.message)
+        console.log('error on write: ', err.message)
+        reject();
     }
     console.log('message written:' + packet)
-})
+    resolve();
+  })
+}
 
 function doNextPart() {
     var packet = ''

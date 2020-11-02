@@ -37,3 +37,14 @@ promise
     console.log("catch:" + errorMessage); 
   });
 
+function makeAPromise(message) {
+  return new Promise(function(resolve, reject) {
+    setTimeout(() => {
+      console.log('do stuff');
+      resolve(message);
+    }, 1000);
+    
+  })
+}
+
+makeAPromise('thismsg').then(myPromiseFunc)
