@@ -12,7 +12,17 @@ let targetArr;
 (async () => {
   await Promise.all(myArrOfObjs.map(async (v, i) => { // without the "await Promise.all" part, the "done" message will come out before the maps end
     await new Promise(res => setTimeout(() => res(), 1000));
-    console.log(`Map: v${JSON.stringify(v)} i${i}`);
+    console.log(`Map: v=${JSON.stringify(v)} i=${i}`);
   }));
   console.log(`done`);
+})();
+
+/* catch the array of values returned */
+(async () => {
+  const results = await Promise.all(myArrOfObjs.map(async (v, i) => { // without the "await Promise.all" part, the "done" message will come out before the maps end
+    await new Promise(res => setTimeout(() => res(), 1000));
+    console.log(`Map: v=${JSON.stringify(v)} i=${i}`);
+    return ( JSON.stringify(v) );
+  }));
+  console.log(`done, result=${JSON.stringify(results)}`);
 })();
